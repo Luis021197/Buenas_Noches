@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Buenas noches, mi amor ✨</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to top, #0d1b2a, #1b263b);
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: url('https://raw.githubusercontent.com/JulianGuerraDev/StarrySkyAnimation/main/stars.png') repeat;
+      animation: moveStars 100s linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes moveStars {
+      from { background-position: 0 0; }
+      to { background-position: -10000px 5000px; }
+    }
+
+    .container {
+      z-index: 1;
+      max-width: 800px;
+      padding: 30px;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(255,255,255,0.2);
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      color: #ffd6ff;
+    }
+
+    p {
+      font-size: 1.2em;
+      line-height: 1.6;
+      color: #e0e0e0;
+      min-height: 150px;
+    }
+
+    .heart {
+      font-size: 2em;
+      color: #ff4d6d;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="stars"></div>
+
+  <div class="container">
+    <h1>Buenas noches, mi amor ✨</h1>
+    <p id="message"></p>
+    <div class="heart">❤️</div>
+  </div>
+
+  <script>
+   const text = `Disculpa si te hice esto, se que no es mucho pero, sé que esta semana fue difícil, que pasaron cosas que no deberían haber pasado. Pero quiero que sepas que estoy aquí, amándote, reconociendo mis errores y deseando mejorar. Me esforzaré mil veces más con tal de verte feliz.
+
+Descansa, mi vida. Que tus sueños estén llenos de paz, amor y tranquilidad. Mañana será un nuevo día, y estaré aquí para ti. Siempre.
+
+Solo pasé para dejarte esto, y decirte que me esforzaré mucho mucho mucho porque te amo ❤️`;
+
+    let i = 0;
+    const speed = 40;
+    const messageElement = document.getElementById("message");
+
+    function typeWriter() {
+      if (i < text.length) {
+        messageElement.innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, speed);
+      }
+    }
+
+    window.onload = typeWriter;
+  </script>
+
+</body>
+</html>
