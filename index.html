@@ -77,6 +77,11 @@
     <div class="heart">❤️</div>
   </div>
 
+  <audio id="backgroundMusic" autoplay loop preload="auto" style="display: none;">
+    <source src="mi-nina-bonita.mp3" type="audio/mpeg">
+    Tu navegador no soporta el elemento de audio.
+  </audio>
+
   <script>
    const text = `Disculpa si te hice esto, se que no es mucho pero, sé que esta semana fue difícil, que pasaron cosas que no deberían haber pasado. Pero quiero que sepas que estoy aquí, amándote, reconociendo mis errores y que voy a mejorar. Me esforzaré mil veces más con tal de verte feliz.
 
@@ -96,9 +101,30 @@ Solo pasé para dejarte esto, y decirte que me esforzaré mucho mucho mucho porq
       }
     }
 
-    window.onload = typeWriter;
+    // Configurar la música de fondo
+    const audio = document.getElementById('backgroundMusic');
+    audio.volume = 0.3; // Volumen suave
+
+    // Función para iniciar todo cuando se carga la página
+    window.onload = function() {
+      // Iniciar el efecto de escritura
+      typeWriter();
+      
+      // Reproducir la música automáticamente
+      setTimeout(() => {
+        audio.play().catch(function(error) {
+          console.log('Reproducción automática bloqueada por el navegador');
+        });
+      }, 1000);
+    };
+
+    // Activar música con cualquier interacción del usuario
+    document.addEventListener('click', function() {
+      if (audio.paused) {
+        audio.play();
+      }
+    }, { once: true });
   </script>
 
 </body>
 </html>
-
